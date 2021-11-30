@@ -1,0 +1,23 @@
+str(rooted_tree)
+Formal class 'treedata' [package "tidytree"] with 11 slots
+  ..@ file       : chr(0) 
+  ..@ treetext   : chr(0) 
+  ..@ phylo      :List of 6
+  .. ..$ edge       : int [1:392, 1:2] 198 266 265 264 238 215 214 213 211 210 ...
+  .. ..$ edge.length: num [1:392] 5.31e-06 2.31e-07 4.90e-08 4.90e-08 4.90e-08 ...
+  .. ..$ Nnode      : int 196
+  .. ..$ node.label : chr [1:196] "Root" "" "" "" ...
+  .. ..$ tip.label  : chr [1:197] "210325_M06578.2021-01-1069-3-l-1_S35_pilon_spades.fasta.ref" "19-MIK281817_S4_pilon_spades.fasta" "19-MIK281818_S5_pilon_spades.fasta" "210415_M06578.2021-01-1196-1-l-1_S6_pilon_spades.fasta" ...
+  .. ..$ bootstrap  : chr [1:196] "Root" "" "" "" ...
+  .. ..- attr(*, "class")= chr "phylo"
+  .. ..- attr(*, "order")= chr "cladewise"
+  ..@ data       : tibble [0 × 0] (S3: tbl_df/tbl/data.frame)
+ Named list()
+  ..@ extraInfo  : tibble [0 × 0] (S3: tbl_df/tbl/data.frame)
+ Named list()
+  ..@ tip_seq    : 'DNAbin' raw(0) 
+  ..@ anc_seq    : 'DNAbin' raw(0) 
+  ..@ seq_type   : chr(0) 
+  ..@ tipseq_file: chr(0) 
+  ..@ ancseq_file: chr(0) 
+  ..@ info       : list()
