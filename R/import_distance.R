@@ -10,6 +10,11 @@ import_distance <- function(file_path){
     
     distance.long <- reshape2::melt(distance_file, id = "file") 
     names(distance.long) <- c("ID1", "ID2", "distance")
-    distance.long %>% mutate_at(.vars = c("ID1", "ID2"),
-                                as.character)
+    distance.long %>% 
+        mutate_at(.vars = c("ID1", "ID2"),
+                                as.character) 
+    # ! Do not remove the duplicates, because used in the tree
+    # ! Do not clean the names because we need the names to connect in the tree
+    # Use after clean_distance_long.R if you need to have cleaned distances
+
 }

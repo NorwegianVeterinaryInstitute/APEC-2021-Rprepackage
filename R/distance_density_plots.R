@@ -10,13 +10,17 @@ distance_density_plots <- function(distance_long_object, n_breaks){
     
     print("removing duplicated pairs and common ids to compute statistics")
     
-    # remove duplicates to get statistics
-    distance.long <-  distance_long_object %>%
-        filter(ID1 != ID2) %>%
-        rowwise() %>%
-        mutate(key = paste(sort(c(ID1,ID2)), collapse = "")) %>%
-        distinct(key, .keep_all = T) %>%
-        select(-key)
+    # remove duplicates to get statistics (old version - write a function for reuse)
+    # distance.long <-  distance_long_object %>%
+    #     filter(ID1 != ID2) %>%
+    #     rowwise() %>%
+    #     mutate(key = paste(sort(c(ID1,ID2)), collapse = "")) %>%
+    #     distinct(key, .keep_all = T) %>%
+    #     select(-key)
+    
+    # remove duplicates to get statistics - with clean distance long (to retest)
+    distance.long <- clean_distance_long(distance_long_object)
+    
     
     print("summary distances statistics: ")
     print(summary(distance.long$distance))
