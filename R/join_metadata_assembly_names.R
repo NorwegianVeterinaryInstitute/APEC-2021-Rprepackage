@@ -33,7 +33,7 @@ join_metadata_assembly_names <- function(metadata_obj,
     assembly_df <- tibble::as_tibble_col(assembly_files, column_name = "file") %>%
         dplyr::mutate(header = stringr::str_remove(file, clean_pattern)) 
     
-    df <- left_join(metadata, assembly_df, by = "header") %>% 
+    df <- left_join(metadata_obj, assembly_df, by = "header") %>% 
         mutate (file = ifelse(!is.na(file.y), file.y, file.x)) %>%
         select(-file.x, -file.y) %>%
         select(file, everything()) %>%

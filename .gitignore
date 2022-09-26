@@ -1,2 +1,6 @@
 *.dia.autosave
+*.Rdata
+*.Rhistory
+R/.RData
+
 

@@ -1,4 +1,7 @@
-need to be fixed -> the tip to drop must be detected automatically 
+Need to be modified 
+- not to have to recode boostrap and not to have to use palette
+- in conjuectuib with standard_treeplot_eve2
+
 #' prepare_visualisation_tree - tree dataobject (but do not keep associated metadata)
 #' Recodes bootstrap
 #' Fixes the label for the reference as ref (its duplicate anyway)
@@ -7,8 +10,9 @@ need to be fixed -> the tip to drop must be detected automatically
 #' the recoding for boostrap
 #' Return tree dataobject 
 #' Works for both rooted and unrooted trees 
+#' To work without recoding the boostrap with 
 
-prepare_visualisation_tree <- function(tree_data_obj, metadata_df, pattern = ".fasta|.ref") {
+prepare_visualisation_tree2 <- function(tree_data_obj, metadata_df, pattern = ".fasta|.ref") {
     
     # extracting phylo for rooting
     phylo_tree <- as.phylo(tree_data_obj)
@@ -26,13 +30,13 @@ prepare_visualisation_tree <- function(tree_data_obj, metadata_df, pattern = ".f
     df_tree_dat <- phylo_tree %>% 
         as_tibble() 
     # select nodes with boostrap values and recode
-    df_recoded_bootstrap <- df_tree_dat %>% 
-        filter(! stringi::stri_isempty(label)) %>%
-        filter(! stringr::str_ends(label, pattern = pattern)) %>%
-        mutate(bootstrap = recode_bootstrap(label)) 
+    # df_recoded_bootstrap <- df_tree_dat %>% 
+    #     filter(! stringi::stri_isempty(label)) %>%
+    #     filter(! stringr::str_ends(label, pattern = pattern)) %>%
+    #     mutate(bootstrap = recode_bootstrap(label)) 
     # joining tree data - still at tibble 
-    df_tree_dat <- df_tree_dat %>% 
-        full_join(df_recoded_bootstrap) 
+    # df_tree_dat <- df_tree_dat %>% 
+    #     full_join(df_recoded_bootstrap) 
 
     tree_dat <- df_tree_dat %>%
         dplyr::left_join(metadata_df, by = c("label" = "file")) %>%
@@ -40,8 +44,10 @@ prepare_visualisation_tree <- function(tree_data_obj, metadata_df, pattern = ".f
         tidytree::as.treedata()
     
     # the ref need to be dropped from the tree as it is in double
-    ############### FIX !!! 
+    
     tree_ok <- treeio::drop.tip(tree_dat, "2021-22-522-103.ref")
+        # That need to be corrected
+    drop_tip <- tree$tip.label[stringr::str_detect(tree$tip.label, ".fasta.ref")]
             
 
     # return 
