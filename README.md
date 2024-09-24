@@ -1,3 +1,8 @@
+202409245 Archiving this project
+Functions for APEC-2021 - could have been a package but is currently not worked on anymore (no time) - but may might be recyclabe
+Some nice functions for distances and phylogeny heatmap though ... 
+
+
 # APEC-2021-Rprepackage
 Prepackage for APEC-2021 analyses
 
